@@ -8,11 +8,13 @@ export default function Index() {
   const [bottomLeft, setBottomLeft] = useState<number>(0);
   const [bottomRight, setBottomRight] = useState<number>(0);
   const [topRight, setTopRight] = useState<number>(0);
+  let cssStr: string = `border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px;`;
 
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Border Radius Previewer</Text>
+
       <View style={
         [styles.rectangle, {borderTopLeftRadius: topLeft,
                             borderTopRightRadius: topRight,
@@ -20,6 +22,11 @@ export default function Index() {
                             borderBottomRightRadius: bottomRight}
         ]
       } />
+
+      <View>
+        <Text style={styles.cssText}>{cssStr}</Text>
+      </View>
+
       <View style={styles.sliderContainer}>
         <Text style={styles.tag}>Top Left</Text>
         <Slider
@@ -86,11 +93,15 @@ const styles = StyleSheet.create({
     borderColor: "#ff007c",
     backgroundColor: "#414868"
   },
+  cssText: {
+    color: "white",
+    marginTop: 10,
+  },
   sliderContainer: {
     flex: 2.5,
     width: 300,
     flexDirection: 'column',
-    backgroundColor: 'inherit',
+    // backgroundColor: 'inherit',
     justifyContent: 'center',
     alignItems: 'center'
   },
